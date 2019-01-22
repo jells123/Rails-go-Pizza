@@ -1,4 +1,17 @@
 <p id="notice"><%= notice %></p>
 
+<th colspan="5"><b><%= @food.name %></b></th><br>
+Price: <%= @food.price %> $ <br><br>
+
+Ingredients:<br>
+<td class="ingredients">
+	<ul> 
+	<% @food.ingredients.each do |ingredient| %>
+  		<li><%= ingredient.name %>,</li>  
+	<% end %>
+	</ul>
+</td>
+
+<br>
 <%= link_to 'Edit', edit_food_path(@food) %> |
 <%= link_to 'Back', foods_path %>
