@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Basic Ruby on Rails app for ordering food (particularly pizza).
 
-Things you may want to cover:
+Currently features:
+1. Sign up, Log in with e-mail + password
+2. Browse available foods (pizzas)
+3. Add new pizza (list of possible ingredients is given)
+4. Order one pizza for given address
 
-* Ruby version
+Incoming features :)
+1. Add reviews to pizzas, give star rating + display average
+2. Order more than one pizza at a time
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+I apologize every viewer for raw-html experience (so far).
