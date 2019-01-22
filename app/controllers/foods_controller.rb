@@ -25,16 +25,10 @@ class FoodsController < ApplicationController
   # POST /foods.json
   def create
     @food = Food.new(food_params)
+    @food.assign_ingredients(params[:food][:ingredient_ids])
 
-    respond_to do |format|
-      if @food.save
-        format.html { redirect_to @food, notice: 'Food was successfully created.' }
-        format.json { render :show, status: :created, location: @food }
-      else
-        format.html { render :new }
-        format.json { render json: @food.errors, status: :unprocessable_entity }
-      end
-    end
+    @food.save
+    redirect_to @food
   end
 
   # PATCH/PUT /foods/1
@@ -67,8 +61,13 @@ class FoodsController < ApplicationController
       @food = Food.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def food_params
-      params.fetch(:food, {})
+      params.require(:food).permit(:name, :price, 
+        :ingredient_ids => [])
     end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    # def food_params
+    #   params.fetch(:food, {})
+    # end
 end
