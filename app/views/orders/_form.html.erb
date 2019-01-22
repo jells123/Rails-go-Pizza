@@ -1,0 +1,31 @@
+<%= form_for [@food, @order] do |form| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    
+    <%= form.label :address %>:<br>
+    <%= form.text_field :address %><br>
+
+    <%= form.label :phone_number %>:<br>
+    <%= form.text_field :phone_number %><br>
+
+    <%= form.label :credit_card %>:<br>
+    <%= form.check_box :credit_card %><br>
+    
+    <%= form.label :message %>:<br>
+    <%= form.text_area :message %><br>
+
+    <%= form.submit %>
+
+  </div>
+<% end %>

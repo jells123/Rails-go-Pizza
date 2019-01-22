@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Foods</h1>
+
+  <%= image_tag("pizzasteve.png", :style => "width: 150px; height: 150px") %>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="5">So many tasty pizzas...</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @foods.each do |food| %>
+      <tr>
+        <td><%= food.name %></td>
+        <td><%= food.price %> $</td>
+        <td><%= link_to 'Show', food %></td>
+        <td><%= link_to 'Order', new_food_order_path(food) %></td>
+      </tr>
+      <tr>
+        <td class="ingredients">
+        <% food.ingredients.each do |ingredient| %>
+          <%= ingredient.name %>,  
+        <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Food', new_food_path %>

@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+
+<br>
+Your order will be delivered to: <%= @order.address %> 
+<br>
+Cost: <%= @order.food.price %> $
+<br><br>
+<%= link_to 'Back', foods_path %>
