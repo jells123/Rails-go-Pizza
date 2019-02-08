@@ -2,6 +2,8 @@
 
 Basic Ruby on Rails app for ordering food (particularly pizza).
 
+TIP: You can use db:seed in order to automatically generate 10 pizzas. 
+
 Currently features:
 1. Sign up, Log in with e-mail + password
 2. Browse available foods (pizzas)
