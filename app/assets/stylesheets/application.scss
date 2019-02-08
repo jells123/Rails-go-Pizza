@@ -1,0 +1,13 @@
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap";
+
+.ingredients {
+	padding-left: 1em;
+	font-style: italic;
+	padding-bottom: 1.5em;
+}
+
+.log-out {
+	float: right;
+}
+

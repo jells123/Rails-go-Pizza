@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_01_22_160405) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "foods", force: :cascade do |t|
     t.string "name"
     t.integer "price"
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 2019_01_22_160405) do
   end
 
   create_table "foods_ingredients", force: :cascade do |t|
-    t.integer "food_id"
-    t.integer "ingredient_id"
+    t.bigint "food_id"
+    t.bigint "ingredient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["food_id"], name: "index_foods_ingredients_on_food_id"
@@ -38,13 +41,13 @@ ActiveRecord::Schema.define(version: 2019_01_22_160405) do
 
   create_table "orders", force: :cascade do |t|
     t.string "address"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "phone_number"
     t.text "message"
     t.boolean "credit_card"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "food_id"
+    t.bigint "food_id"
     t.index ["food_id"], name: "index_orders_on_food_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -52,8 +55,8 @@ ActiveRecord::Schema.define(version: 2019_01_22_160405) do
   create_table "reviews", force: :cascade do |t|
     t.string "text"
     t.integer "rating"
-    t.integer "food_id"
-    t.integer "user_id"
+    t.bigint "food_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["food_id"], name: "index_reviews_on_food_id"
@@ -72,4 +75,10 @@ ActiveRecord::Schema.define(version: 2019_01_22_160405) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "foods_ingredients", "foods"
+  add_foreign_key "foods_ingredients", "ingredients"
+  add_foreign_key "orders", "foods"
+  add_foreign_key "orders", "users"
+  add_foreign_key "reviews", "foods"
+  add_foreign_key "reviews", "users"
 end
